@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Customer extends Thread{
     private int id;
     private long shopTime;
@@ -7,6 +9,7 @@ public class Customer extends Thread{
 
     private long minShopTime = 3000;
     private long maxShopTime = 20000;
+    private ArrayList<Customer> downShopping;
 
     private static int nextID = 0;
     //every customer will share the ID
@@ -31,4 +34,17 @@ public class Customer extends Thread{
     }
 
 
+    public boolean ifdoneshopping() {
+        if (enterTime + shopTime > System.currentTimeMillis()) {
+            return false;
+        }
+        return true;
+    }
+
+    public void doneshopping(Customer c, ArrayList<Customer> downShopping){
+        if(c.ifdoneshopping()){
+
+        }
+        downShopping.add(c);
+    }
 }
